@@ -20,6 +20,11 @@ class ReferenceSeeder extends Seeder
                 'name' => 'Salary / 173',
                 'expression' => '(salary / 173) * overtime_duration_total',
             ],
+            [
+                'code' => 'overtime_method',
+                'name' => 'Fixed',
+                'expression' => '10000 * overtime_duration_total',
+            ],
         ]);
     }
 }
