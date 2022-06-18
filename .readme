@@ -1,0 +1,15 @@
+##GETTING STARTED
+
+    1. Install dependencies
+        - Jalankan "composer install"
+    2. .env
+        - Sesuaikan konfigurasi database pada bagian
+            DB_DATABASE=overtime
+            DB_USERNAME=root
+            DB_PASSWORD=
+    2. Database
+        - Buat database baru dengan nama misal:"overtime"
+        - Jalankan "php artisan migrate"
+        - Jalankan "php artisan db:seed"
+    3. Run
+        - Jalankan "php artisan serve"

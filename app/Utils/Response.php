@@ -29,7 +29,7 @@ trait Response
         return new JsonResponse([
             'message' => 'Validation Error',
             'errors' => $validation,
-        ], 422);
+        ], 400);
     }
 
 }

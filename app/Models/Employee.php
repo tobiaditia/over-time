@@ -9,6 +9,11 @@ class Employee extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'salary',
+    ];
+
     public function overtime(){
         return $this->hasMany(Overtime::class);
     }
