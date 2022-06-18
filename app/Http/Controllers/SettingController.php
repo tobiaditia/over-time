@@ -16,7 +16,7 @@ class SettingController extends Controller
     }
     /**
     * @OA\Patch(
-    *      path="/api/settings",
+    *      path="/settings",
     *      operationId="updateSetting",
     *      tags={"Setting"},
     *      summary="Update settings",

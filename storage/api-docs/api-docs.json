@@ -5,7 +5,7 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/employees": {
+        "/employees": {
             "post": {
                 "tags": [
                     "Employee"
@@ -85,7 +85,7 @@
                 }
             }
         },
-        "/api/overtimes": {
+        "/overtimes": {
             "post": {
                 "tags": [
                     "Overtime"
@@ -165,7 +165,7 @@
                 }
             }
         },
-        "/api/overtime-pays/calculate": {
+        "/overtime-pays/calculate": {
             "get": {
                 "tags": [
                     "Overtime"
@@ -306,7 +306,7 @@
                 }
             }
         },
-        "/api/settings": {
+        "/settings": {
             "patch": {
                 "tags": [
                     "Setting"

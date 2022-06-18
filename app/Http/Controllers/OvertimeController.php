@@ -17,7 +17,7 @@ class OvertimeController extends Controller
 
     /**
     * @OA\Post(
-    *      path="/api/overtimes",
+    *      path="/overtimes",
     *      operationId="storeOvertime",
     *      tags={"Overtime"},
     *      summary="Store new employee",
@@ -90,7 +90,7 @@ class OvertimeController extends Controller
 
     /**
     * @OA\Get(
-    *      path="/api/overtime-pays/calculate",
+    *      path="/overtime-pays/calculate",
     *      operationId="calculateOvertime",
     *      tags={"Overtime"},
     *      summary="Calculate employee salary",

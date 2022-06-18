@@ -13,7 +13,7 @@ class GeneralTest extends TestCase
 
     public function test_update_setting()
     {
-        $response = $this->patch('/api/settings', [
+        $response = $this->patch('/settings', [
             'key' => 'overtime_method',
             'value' => 1
         ]);
@@ -28,7 +28,7 @@ class GeneralTest extends TestCase
             'salary' => 2000000
         ];
 
-        $response = $this->post('/api/employees', $array);
+        $response = $this->post('/employees', $array);
 
         $response->assertStatus(201);
 
@@ -52,7 +52,7 @@ class GeneralTest extends TestCase
             'time_ended' => '23:45'
         ];
 
-        $response = $this->post('/api/overtimes', $arrayOvertimes);
+        $response = $this->post('/overtimes', $arrayOvertimes);
 
         $response->assertStatus(201);
 
@@ -62,7 +62,7 @@ class GeneralTest extends TestCase
 
     public function test_calculate_overtime()
     {
-        $response = $this->get('/api/overtime-pays/calculate?month=2022-06');
+        $response = $this->get('/overtime-pays/calculate?month=2022-06');
 
         $response->assertStatus(200);
     }

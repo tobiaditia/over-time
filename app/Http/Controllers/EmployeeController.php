@@ -19,7 +19,7 @@ class EmployeeController extends Controller
 
     /**
     * @OA\Post(
-    *      path="/api/employees",
+    *      path="/employees",
     *      operationId="storeEmployee",
     *      tags={"Employee"},
     *      summary="Store new employee",
