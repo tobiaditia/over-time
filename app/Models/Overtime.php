@@ -27,6 +27,7 @@ class Overtime extends Model
         'time_started',
         'time_ended',
     ];
+    protected $hidden = ['created_at', 'updated_at'];
 
     use HasFactory;
 }

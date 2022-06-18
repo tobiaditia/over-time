@@ -6,6 +6,7 @@ use App\Http\Resources\OvertimeCalculateResource;
 use App\Repositories\OvertimeRepository;
 use Illuminate\Support\Facades\Validator;
 use App\Utils\Response;
+use Illuminate\Validation\Rule;
 
 class Overtime2Services{
     use Response;
@@ -18,7 +19,11 @@ class Overtime2Services{
     public function createOvertime($data) {
         $validator = Validator::make($data, [
             'employee_id' => 'required|integer|exists:employees,id',
-            'date' => 'required|date',
+            'date' => [
+                'required',
+                'date',
+                Rule::unique('overtimes')->where('employee_id', $data['employee_id'])->where('date', $data['date'])
+            ],
             'time_started' => 'required|date_format:H:i|before:time_ended',
             'time_ended' => 'required|date_format:H:i|after:time_started',
         ]);

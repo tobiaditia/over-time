@@ -25,6 +25,7 @@ class Employee extends Model
         'name',
         'salary',
     ];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function overtime(){
         return $this->hasMany(Overtime::class);
