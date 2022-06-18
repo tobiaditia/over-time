@@ -5,18 +5,6 @@ use Illuminate\Http\JsonResponse;
 
 trait Response
 {
-    public function responseData ($data, $message = null){
-        if ($message != null){
-            return new JsonResponse([
-                'message' => $message,
-                'data'   => $data,
-            ],200);
-        }
-        return new JsonResponse([
-            'result' => true,
-            'data'      => $data,
-        ],200);
-    }
 
     public function responseServerError(){
         return new JsonResponse([
