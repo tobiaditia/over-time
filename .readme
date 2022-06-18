@@ -13,3 +13,7 @@
         - Jalankan "php artisan db:seed"
     3. Run
         - Jalankan "php artisan serve"
+
+##TESTING
+    1. Jalankan "php artisan serve"
+    2. Buka tautan "http://127.0.0.1:8000/api/documentation"

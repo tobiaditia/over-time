@@ -1,0 +1,458 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Overtime Test",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/employees": {
+            "post": {
+                "tags": [
+                    "Employee"
+                ],
+                "summary": "Store new employee",
+                "description": "Returns employee data",
+                "operationId": "storeEmployee",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Employee"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Employee"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "string",
+                                                        "example": "The name has already been taken"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/overtimes": {
+            "post": {
+                "tags": [
+                    "Overtime"
+                ],
+                "summary": "Store new employee",
+                "description": "Returns employee data",
+                "operationId": "storeOvertime",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Overtime"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Overtime"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "string",
+                                                        "example": "The time started must be a date before time ended."
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/overtime-pays/calculate": {
+            "get": {
+                "tags": [
+                    "Overtime"
+                ],
+                "summary": "Calculate employee salary",
+                "description": "Returns employee data",
+                "operationId": "calculateOvertime",
+                "parameters": [
+                    {
+                        "name": "month",
+                        "in": "query",
+                        "description": "month",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2022-06"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "tobi"
+                                                    },
+                                                    "salary": {
+                                                        "type": "integer",
+                                                        "example": 2000000
+                                                    },
+                                                    "overtimes": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "integer",
+                                                                    "example": 1
+                                                                },
+                                                                "date": {
+                                                                    "type": "string",
+                                                                    "example": "2022-06"
+                                                                },
+                                                                "time_started": {
+                                                                    "type": "string",
+                                                                    "example": "19:00"
+                                                                },
+                                                                "time_ended": {
+                                                                    "type": "string",
+                                                                    "example": "20:00"
+                                                                },
+                                                                "overtime_duration": {
+                                                                    "type": "string",
+                                                                    "example": "2"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "overtime_duration_total": {
+                                                        "type": "integer",
+                                                        "example": 20
+                                                    },
+                                                    "amount": {
+                                                        "type": "integer",
+                                                        "example": 10000000
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "string",
+                                                        "example": "The time started must be a date before time ended."
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/settings": {
+            "patch": {
+                "tags": [
+                    "Setting"
+                ],
+                "summary": "Update settings",
+                "description": "Returns settings data",
+                "operationId": "updateSetting",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Setting"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Setting"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation Error"
+                                        },
+                                        "errors": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "message": {
+                                                        "type": "string",
+                                                        "example": "The time started must be a date before time ended."
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Server Error"
+                                        },
+                                        "errors": {
+                                            "type": "string",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Employee": {
+                "title": "Employee",
+                "description": "Employee model",
+                "properties": {
+                    "name": {
+                        "description": "name",
+                        "format": "string",
+                        "default": "tobi",
+                        "minLength": 2
+                    },
+                    "salary": {
+                        "description": "salary",
+                        "format": "integer",
+                        "default": 2000000,
+                        "maximum": 10000000,
+                        "minimum": 2000000
+                    }
+                },
+                "type": "object"
+            },
+            "Overtime": {
+                "title": "Overtime",
+                "description": "Overtime model",
+                "properties": {
+                    "employee_id": {
+                        "description": "employee_id",
+                        "format": "integer",
+                        "example": 1
+                    },
+                    "date": {
+                        "description": "date",
+                        "format": "string",
+                        "example": "19-06-2022"
+                    },
+                    "time_started": {
+                        "description": "time_started",
+                        "format": "string",
+                        "example": "19:00"
+                    },
+                    "time_ended": {
+                        "description": "time_ended",
+                        "format": "string",
+                        "example": "23:45"
+                    }
+                },
+                "type": "object"
+            },
+            "Setting": {
+                "title": "Setting",
+                "description": "Setting model",
+                "properties": {
+                    "key": {
+                        "description": "key",
+                        "format": "key",
+                        "example": "overtime_method"
+                    },
+                    "value": {
+                        "description": "value",
+                        "format": "value",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
